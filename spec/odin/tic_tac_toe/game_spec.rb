@@ -16,17 +16,16 @@ RSpec.describe Odin::TicTacToe::Game do
     end
 
     it 'should return an empty board' do
-      expect(subject).to(
-        have_attributes(board: <<~BOARD.chomp)
-          +---+---+---+
-          | 1 | 2 | 3 |
-          +---+---+---+
-          | 4 | 5 | 6 |
-          +---+---+---+
-          | 7 | 8 | 9 |
-          +---+---+---+
-        BOARD
-      )
+      subject
+      expect(subject.board.to_s).to eq(<<~BOARD.chomp)
+        +---+---+---+
+        | 1 | 2 | 3 |
+        +---+---+---+
+        | 4 | 5 | 6 |
+        +---+---+---+
+        | 7 | 8 | 9 |
+        +---+---+---+
+      BOARD
     end
   end
 
@@ -59,7 +58,7 @@ RSpec.describe Odin::TicTacToe::Game do
         let(:cell) { 1 }
         it 'should place a token for the current player in the given cell' do
           subject
-          expect(game.board).to eq(<<~BOARD.chomp)
+          expect(game.board.to_s).to eq(<<~BOARD.chomp)
             +---+---+---+
             | X | 2 | 3 |
             +---+---+---+
@@ -75,7 +74,7 @@ RSpec.describe Odin::TicTacToe::Game do
         let(:cell) { 5 }
         it 'should place a token for the current player in the given cell' do
           subject
-          expect(game.board).to eq(<<~BOARD.chomp)
+          expect(game.board.to_s).to eq(<<~BOARD.chomp)
             +---+---+---+
             | 1 | 2 | 3 |
             +---+---+---+
@@ -91,7 +90,7 @@ RSpec.describe Odin::TicTacToe::Game do
         let(:cell) { 9 }
         it 'should place a token for the current player in the given cell' do
           subject
-          expect(game.board).to eq(<<~BOARD.chomp)
+          expect(game.board.to_s).to eq(<<~BOARD.chomp)
             +---+---+---+
             | 1 | 2 | 3 |
             +---+---+---+
@@ -121,7 +120,7 @@ RSpec.describe Odin::TicTacToe::Game do
 
         it 'should place a token for the current player the given cell' do
           subject
-          expect(game.board).to eq(<<~BOARD.chomp)
+          expect(game.board.to_s).to eq(<<~BOARD.chomp)
             +---+---+---+
             | X | 2 | 3 |
             +---+---+---+

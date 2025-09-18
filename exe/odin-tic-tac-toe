@@ -3,31 +3,4 @@
 
 require 'odin/tic_tac_toe'
 
-puts "Let's Play Tic Tac Toe\n\n"
-
-game = Odin::TicTacToe::Game.new
-
-until game.over?
-  puts game.board
-
-  print "Player #{game.current_player}, enter a move (1-9): "
-  cell = gets.chomp
-  puts
-
-  begin
-    game.move(cell.to_i)
-
-    if game.over?
-      puts game.board
-      puts
-      puts 'GAME OVER'
-      puts "Player #{game.winner} won!" if game.won?
-      puts 'Tie game! Try playing another game' if game.tied?
-      puts
-      break
-    end
-  rescue Odin::TicTacToe::MoveError => e
-    puts "Move '#{cell}' is not valid: #{e.message}"
-    puts "Try again\n\n"
-  end
-end
+Odin::TicTacToe::CommandLineInterface.new.run

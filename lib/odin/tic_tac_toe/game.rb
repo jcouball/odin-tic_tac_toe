@@ -6,8 +6,6 @@ module Odin
     class Game
       attr_reader :current_player
 
-      VALID_PLAYERS = %w[X O]
-
       def initialize
         @current_player = 'X'
         @board = [
@@ -85,7 +83,7 @@ module Odin
       end
 
       def move(cell)
-        assert_game_not_over(cell)
+        assert_game_not_over
         assert_cell_is_valid(cell)
         assert_cell_is_unoccupied(cell)
         place_token_on_board(cell, current_player)
@@ -94,9 +92,7 @@ module Odin
 
       private
 
-      def assert_game_not_over(cell)
-        return unless over?
-
+      def assert_game_not_over
         raise Odin::TicTacToe::MoveError, 'The game has already ended in a tie.' if tied?
         raise Odin::TicTacToe::MoveError, "The game has already been won by #{winner}!" if won?
       end

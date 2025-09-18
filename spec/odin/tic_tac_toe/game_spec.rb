@@ -205,9 +205,71 @@ RSpec.describe Odin::TicTacToe::Game do
     end
   end
 
-  describe '#who_won' do
+  describe '#over?' do
+    subject { game.over? }
+
+    context 'game has not ended in a tie and no one has won' do
+      it { is_expected.to eq(false) }
+    end
+
+    context 'game ended in a tie' do
+      before { [1, 3, 2, 4, 6, 5, 7, 9, 8].each { |cell| game.move(cell) } }
+      it { is_expected.to eq(true) }
+    end
+
+    context 'player X has won' do
+      before { [1, 4, 2, 5, 3].each { |cell| game.move(cell) } }
+      it { is_expected.to eq(true) }
+    end
+
+    context 'player O has won' do
+      before { [4, 1, 5, 2, 7, 3].each { |cell| game.move(cell) } }
+      it { is_expected.to eq(true) }
+    end
   end
 
-  describe '#more_moves?' do
+  describe '#winner' do
+    subject { game.winner }
+    context 'X wins' do
+      context 'row 1 win' do
+        before { [1, 4, 2, 5, 3].each { |cell| game.move(cell) } }
+        it { is_expected.to eq('X') }
+      end
+
+      context 'row 2 win' do
+        before { [4, 1, 5, 2, 6].each { |cell| game.move(cell) } }
+        it { is_expected.to eq('X') }
+      end
+
+      context 'row 3 win' do
+        before { [7, 4, 8, 5, 9].each { |cell| game.move(cell) } }
+        it { is_expected.to eq('X') }
+      end
+
+      context 'column 1 win' do
+        before { [1, 2, 4, 5, 7].each { |cell| game.move(cell) } }
+        it { is_expected.to eq('X') }
+      end
+
+      context 'column 2 win' do
+        before { [2, 1, 5, 4, 8].each { |cell| game.move(cell) } }
+        it { is_expected.to eq('X') }
+      end
+
+      context 'column 3 win' do
+        before { [3, 1, 6, 4, 9].each { |cell| game.move(cell) } }
+        it { is_expected.to eq('X') }
+      end
+
+      context 'diagonal north-west win' do
+        before { [1, 2, 5, 4, 9].each { |cell| game.move(cell) } }
+        it { is_expected.to eq('X') }
+      end
+
+      context 'diagonal north-east win' do
+        before { [3, 1, 5, 4, 7].each { |cell| game.move(cell) } }
+        it { is_expected.to eq('X') }
+      end
+    end
   end
 end

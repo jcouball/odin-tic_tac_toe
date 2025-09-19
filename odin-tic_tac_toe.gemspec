@@ -45,4 +45,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'ruby-lsp', '~> 0.26'
   spec.add_development_dependency 'ruby-lsp-rspec', '~> 0.1'
   spec.add_development_dependency 'simplecov', '~> 0.22'
+  spec.add_development_dependency 'yard', '~> 0.9'
 end

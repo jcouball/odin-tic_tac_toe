@@ -29,7 +29,7 @@ RSpec.describe Odin::TicTacToe::CommandLineInterface do
 
       it 'plays a full game until a winner is declared' do
         run_cli
-        expect(output.string).to include("GAME OVER\nPlayer X won!")
+        expect(output.string).to include('GAME OVER: Player X won!')
       end
 
       it 'shows the correct prompts and board states' do
@@ -74,7 +74,7 @@ RSpec.describe Odin::TicTacToe::CommandLineInterface do
 
       it 'prints the tie game message' do
         run_cli
-        expect(output.string).to include("GAME OVER\nTie game! Try playing another game")
+        expect(output.string).to include('GAME OVER: Tie game! Try again.')
       end
     end
 

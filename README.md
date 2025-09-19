@@ -1,29 +1,49 @@
 # Odin::TicTacToe
 
 A tic-tac-toe game on the command line where two human players can play against each
-other.
+other. This project was created as part of [The Odin Project's
+curriculum](https://www.theodinproject.com/lessons/ruby-tic-tac-toe).
 
-[Odin Tic Tac Toe Project](https://www.theodinproject.com/lessons/ruby-tic-tac-toe)
+* **Executable**: The command-line script can be found at
+  [exe/odin-tic-tac-toe](exe/odin-tic-tac-toe).
 
-[Solution Code](lib/odin/tic_tac_toe/)
+* **Source Code**: The main library code is located in
+  [lib/odin/tic_tac_toe/](lib/odin/tic_tac_toe/).
 
-[RSpec Tests](spec/odin/tic_tac_toe/)
+  * **CommandLineInterface**: The main entry point for the command line script is the
+    [Odin::TicTacToe::CommandLineInterface](lib/odin/tic_tac_toe/command_line_interface.rb)
+    class. This class is the interface between the user and the
+    [Odin::TicTacToe::Game](lib/odin/tic_tac_toe/game.rb) class.
+
+  * **Game**: The Game class implements the main logic for playing the Tic Tac Toe
+    game. Game objects hold a [Odin::TicTacToe::Game](lib/odin/tic_tac_toe/board.rb)
+    object to keep track of the board state.
+
+  * **Board**: The Board class keeps the state for the Tic Tac Toe board and knows
+    how to determine if the board is full or if there is a winner.
+
+* **Tests**: The project includes a full RSpec test suite with 100% branch coverage,
+  which can be found in [spec/odin/tic_tac_toe/](spec/odin/tic_tac_toe/).
 
 ## Installation
 
-Install the gem and add to the application's Gemfile by executing:
+**NOTE** This project is a demonstration only and its gem has not been published to
+rubygems.org.
 
-```bash
-bundle add odin-tic_tac_toe
-```
+To install the odin-tic_tac_toe gem, clone the project, run `bin/setup` and then
+install the project gem locally:
 
-If bundler is not being used to manage dependencies, install the gem by executing:
-
-```bash
-gem install odin-tic_tac_toe
+```shell
+git clone https://github.com/jcouball/odin-tic_tac_toe
+cd odin-tic_tac_toe
+bin/setup
+bundle exec rake install
 ```
 
 ## Usage
+
+Once installed, you can run the game using the `odin-tic-tac-toe` command line
+script:
 
 ```shell
 $ odin-tic-tac-toe
@@ -66,6 +86,6 @@ License](https://opensource.org/licenses/MIT).
 
 ## Code of Conduct
 
-Everyone interacting in the Odin::BubbleSort project's codebases, issue trackers,
+Everyone interacting in the odin-tic_tac_toe project's codebases, issue trackers,
 chat rooms and mailing lists is expected to follow the [code of
 conduct](https://github.com/jcouball/odin-tic_tac_toe/blob/main/CODE_OF_CONDUCT.md).
